@@ -8,7 +8,7 @@ function average (arr) {
     return (sum/arr.length)
 };
 
-const fylesytem = require('fs')
+const fylesytem = require('fs');
 
 function writeInFile (stringVariable){
     fylesytem.writeFileSync("Archivo.txt",stringVariable)
@@ -21,6 +21,20 @@ function WriteFibonacci (number){
     }
     console.log(fibonacci)
 }
+
+const HTTPS = require ('http')
+
+
+
 writeInFile("Hola mundo!")
 WriteFibonacci(10);
 console.log(average(arr));
+
+const HTML = fylesytem.readFileSync("index.html")
+const server = HTTPS.createServer((request, response) =>{
+    response.setHeader('Content-Type', 'text/html');
+    response.write(HTML);
+    response.end();
+});
+
+server.listen(3000);
