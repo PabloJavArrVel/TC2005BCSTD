@@ -1,3 +1,8 @@
+//Francisco Couttolenc Ortiz - A01754959
+//Pablo Javier Arreola Velasco - A01747824
+
+
+
 const http = require('http');
 const fs = require('fs');
 const cake = "https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg";
@@ -11,12 +16,12 @@ const server = http.createServer((request,response) => {
             response.write("<!DOCTYPE html>");
             response.write("<html>");
             response.write("<head><meta charset='utf-8'></head><body>");
-            response.write("<h1>Do you like cake?</h1>");
+            response.write("<h1>Te gusta el pastel?</h1>");
             response.write("<img src='" + cake + "'/>");
             response.write("<form method='POST' action='/cake'>");
-            response.write("<input type='checkbox' name='likeCake' value='yes'> Yes, I like cake<br>");
-            response.write("<input type='checkbox' name='likeCake' value='no'> No, I don't like cake<br>");
-            response.write("<button type='submit'>Submit</button>");
+            response.write("<input type='checkbox' name='likeCake' value='Si'> Si, me gusta el pastel<br>");
+            response.write("<input type='checkbox' name='likeCake' value='no'> No, me gusta el pastel<br>");
+            response.write("<button type='submit'>Enviar</button>");
             response.write("</form>");
             response.write("</body></html>");
             response.end();
@@ -26,12 +31,12 @@ const server = http.createServer((request,response) => {
                 data += chunk.toString();
             });
             request.on('end', () => {
-                const likeCake = data.split('=')[1]; // get the value of the checkbox
-                fs.appendFile('cakeResponses.txt', `${likeCake}\n`, err => { // write the value to file
+                const likeCake = data.split('=')[1]; 
+                fs.appendFile('cakeResponses.txt', `${likeCake}\n`, err => { 
                     if (err) throw err;
                     console.log('Data written to file');
                     response.setHeader('Content-Type', 'text/html');
-                    response.statusCode = 302; // redirect to the cake page
+                    response.statusCode = 302; 
                     response.setHeader('Location', '/cake');
                     response.end();
                 });
