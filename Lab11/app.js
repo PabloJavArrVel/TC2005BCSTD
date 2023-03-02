@@ -1,17 +1,22 @@
-console.log("Hola desde node");
-console.log("Hola desde npm");
+//Francisco Couttolenc Ortíz A01754959
+//Pablo Javier Arreola Velasco A01747824
 
 const express = require('express');
+
+const comidas = require('./routes/comidas');
+
+const juegos = require('./routes/juegos');
+
 const app = express();
 
-app.use((request,response,next) => {
-    console.log("Middleware");
-    next();
-});
+app.use('/comidas', comidas);
 
-app.use((request,response,next) => {
-    console.log("Otro Middleware");
-    response.send("¡Hola mundo!");
-});
+app.use('/juegos', juegos);
 
-app.listen(3000);
+app.use((request, response, next) => {
+    const error = new Error('No hay nada aquí');
+    error.status = 404;
+    next(error);
+  });
+
+app.listen(5000);
