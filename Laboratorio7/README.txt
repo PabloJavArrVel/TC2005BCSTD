@@ -1,0 +1,1 @@
+Se hicieron ramas main y develop en el repositorio del equipo: https://github.com/ricardo020202/Total-Tech

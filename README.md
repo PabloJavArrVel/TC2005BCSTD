@@ -1,1 +1,1 @@
-Los otros labs: https://github.com/Couttolenc01/Laboratorios/commit/42a0eca573882a9a58134d1f9d234a4cb375a32d
+<img src="https://pps.whatsapp.net/v/t61.24694-24/345184982_937326233975137_2377846137117576863_n.jpg?ccb=11-4&oh=01_AdS4n5aB3QKYdh3CGN0QR16xdiRW60t8kxgPaUP1pVVDyQ&oe=6462B307" alt="Laboratorios de Fundamentos de Ingeniería de Software" width="500"/>

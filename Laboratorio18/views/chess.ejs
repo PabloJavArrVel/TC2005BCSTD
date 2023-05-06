@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Games</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="/js/lib/dist.js" type="text/javascript"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+    nav.navbar {
+      background-color: #0066cc;
+    }
+    nav.navbar a.navbar-brand {
+      color: #fff;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+    }
+    nav.navbar button.navbar-toggler {
+      border: none;
+      color: #fff;
+    }
+    nav.navbar button.navbar-toggler:focus, 
+    nav.navbar button.navbar-toggler:hover {
+      outline: none;
+      color: #fff;
+    }
+    nav.navbar div.collapse {
+      justify-content: flex-end;
+    }
+    nav.navbar ul.navbar-nav {
+      margin-left: auto;
+    }
+    nav.navbar li.nav-item {
+      margin: 0 10px;
+    }
+    nav.navbar a.nav-link {
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    nav.navbar a.nav-link i.fa {
+      margin-right: 5px;
+    }
+    div.container {
+      margin-top: 40px;
+    }
+    form.form-inline {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    input.form-control, 
+    select.form-control {
+      width: 150px;
+      margin-right: 10px;
+    }
+    button.btn.btn-primary {
+      margin-left: 10px;
+    }
+    div.col-12.text-center h1 {
+      font-size: 10em;
+      margin-top: 100px;
+    }
+    div.col-12.text-center h3 {
+      font-size: 4em;
+      margin-top: 40px;
+    }
+    div.card {
+      margin-bottom: 20px;
+      border: none;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      height: 800px;
+    }
+    div.card img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+      object-position: center;
+    }
+    div.card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: auto;
+      padding: 20px;
+      height: 100%;
+    }
+    h5.card-title {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+    }
+    p.card-text {
+      margin-bottom: 20px;
+      text-align: justify;
+      font-size: 1.2rem;
+    }
+    a.btn.btn-primary {
+      margin-top: auto;
+      margin-bottom: 10px;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/home">
+      <img src="/Users/pabloarreolavelasco/Downloads/Chess app/Laboratorios/Laboratorio12-19/Laboratorio12-19/Laboratorio13Ajedrez/public/assets/logo.png" alt="logo">
+      <img src="../public/assets/logo.png" width="30" height="30" alt="Logo">
+      Chess App
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/login"><i class="fa fa-user"></i> Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form class="form-inline" method="POST" action="/home">
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="username" class="sr-only">Username</label>
+            <input type="text"  class="form-control" id="username" name="username" placeholder="Username" required>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="year" class="sr-only">Year</label>
+            <input type="number" class="form-control" id="year" name="year" placeholder="Year" required>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="month" class="sr-only">Month</label>
+            <select class="form-control" id="month" name="month"  class="form-control">
+              <option value="" selected>Month</option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+        
+      </div>
+    </div>
+    <p style="margin-top: 10px; font-size: 16px; color: #999;">Games are shown in your perspective</p>
+    <br>
+    <% if (games.length === 0) { %>
+      <div class="col-12 text-center">
+      <h1 style="font-size: 10em;">\(o_o)/</h1>
+      <h3 style="font-size: 4em;">No games found</h3>
+      </div>
+    <% }
+    else { %>
+      <div class="row align-items-center align-content-center">
+        <% games.forEach(function(game) { %>
+          <div class="col-6 align-items-center align-content-center">
+            <div class="card">
+              <div class="card-body text-center">
+                <h5 class="card-title">
+                  <%= game.white %> (<%= game.ratingWhite %>) vs <%= game.black %> (<%= game.ratingBlack %>)
+                </h5>
+                <div id="board_<%= game.id %>" class="align-items-center align-content-center" style="width: 470px"></div>
+                <a href="/games/<%= game.id %>" class="btn btn-primary">View game</a>
+                <% if (game.perspectiveBoard == 'white') { %>
+                <script>
+                  var board_<%= game.id %> = PGNV.pgnView('board_<%= game.id %>', {
+                    pgn: "<%= game.moves %>",  theme: 'blue' , pieceStyle: 'alpha'
+                  });
+                </script>
+                <% } else { %>
+                <script>
+                  var board_<%= game.id %> = PGNV.pgnView('board_<%= game.id %>', {
+                    pgn: "<%= game.moves %>",  theme: 'blue' , pieceStyle: 'alpha', orientation: 'black'
+                  });
+                </script>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+      <% } %>
+  </div>
+ 
+</body>
+
+</html>
