@@ -1,1 +1,1 @@
-<img src="https://pps.whatsapp.net/v/t61.24694-24/345184982_937326233975137_2377846137117576863_n.jpg?ccb=11-4&oh=01_AdS4n5aB3QKYdh3CGN0QR16xdiRW60t8kxgPaUP1pVVDyQ&oe=6462B307" alt="Laboratorios de Fundamentos de Ingeniería de Software" width="500"/>
+<img src="https://pps.whatsapp.net/v/t61.24694-24/345184982_937326233975137_2377846137117576863_n.jpg?ccb=11-4&oh=01_AdS4n5aB3QKYdh3CGN0QR16xdiRW60t8kxgPaUP1pVVDyQ&oe=6462B307" alt="Laboratorios de Fundamentos de Ingeniería de Software" width="1000"/>
